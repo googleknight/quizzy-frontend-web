@@ -1,0 +1,24 @@
+.Scores{
+    border: 2px solid black;
+    width:80vh;
+    margin: 5vh;
+    display: flex;
+    flex-direction:row;
+}
+.Scores-number{
+    border-bottom: 2px solid black;
+    margin: 0;
+    padding: 1vh;
+}
+.Scores-statement{
+    border-bottom: 2px solid black;
+   
+    margin:0;
+    padding: 2vh;
+    font-size: 0.8em;
+    text-justify: center;
+}
+.Scores-options{
+    padding: 2vh;
+    font-size: 0.9em;
+}
