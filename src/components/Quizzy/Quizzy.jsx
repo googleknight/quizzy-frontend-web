@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
-import LoginBox from '../LoginBox/LoginBox';
 import Button from '../Button/Button';
 import QuestionBox from '../QuestionBox/QuestionBox';
 

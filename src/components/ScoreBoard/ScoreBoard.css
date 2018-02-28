@@ -1,0 +1,6 @@
+.ScoreBoard-App-body{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

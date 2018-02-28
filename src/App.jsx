@@ -10,27 +10,42 @@ class App extends Component {
     this.state = {
       homepage: 'Login',
       data:[],
-      username:''
+      username:'',
+      userscore:{},
     };
   }
+
+  gotoLogin=()=>  {
+    this.setState({
+      homepage: 'Login',
+    });
+  }
+
+
   calculateScore=(username)=>  {
+    console.log(username);
     fetch('/quizzy/score', { method: 'POST', headers: {
       "Content-type": "application/json; charset=utf-8"
-    }, body: JSON.stringify(username) })
+    }, body: JSON.stringify({username}) })
       .then(response => response.json())
-      .then((responseObj) => {
+      .then((score) => {
+        this.setState({
+          userscore:score.data,
+        });
+        fetch('/quizzy/topScores')
+          .then(response => response.json())
+          .then((topScores) => {
         this.setState({
           homepage: 'Score',
-          data:responseObj.data,
-          username
+          data:topScores.data,
         });
-      });
+      })})
   }
 
   handleLogin=(username)=>  {
     fetch('/quizzy/login', { method: 'POST', headers: {
       "Content-type": "application/json; charset=utf-8"
-    }, body: JSON.stringify(username) })
+    }, body: JSON.stringify({username}) })
       .then(response => response.json())
       .then((responseObj) => {
         this.setState({
@@ -41,8 +56,6 @@ class App extends Component {
       });
   }
 
-
-
   render() {
     let homepage;
     if (this.state.homepage === 'Login') {
@@ -51,9 +64,12 @@ class App extends Component {
       homepage = (<Quizzy
          data={this.state.data} 
          username={this.state.username}
-         callbackFromApp={this.calculateScore}/>);
+         callbackFromApp={()=>this.calculateScore(this.state.username)}/>);
     } else if (this.state.homepage === 'Score') {
-      homepage = (<ScoreBoard />);
+      homepage = (<ScoreBoard 
+         userscore={this.state.userscore}
+         data={this.state.data}
+        callbackFromApp={this.gotoLogin}/>);
     }
     return (
       <div className="App">
