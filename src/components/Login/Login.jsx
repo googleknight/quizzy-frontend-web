@@ -9,7 +9,7 @@ class Login extends Component {
       <div className="App-container" >
         <Header username="" />
         <div className="App-body">
-          <LoginBox />
+          <LoginBox callbackFromApp={this.props.callbackFromApp} />
         </div>
       </div>
     );

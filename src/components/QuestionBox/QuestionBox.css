@@ -1,0 +1,22 @@
+.QuestionBox{
+    border: 2px solid black;
+    width:80vh;
+    margin: 5vh;
+}
+.QuestionBox-number{
+    border-bottom: 2px solid black;
+    margin: 0;
+    padding: 1vh;
+}
+.QuestionBox-statement{
+    border-bottom: 2px solid black;
+    background-color: #45c7f5;
+    margin:0;
+    padding: 2vh;
+    font-size: 0.8em;
+    text-justify: center;
+}
+.QuestionBox-options{
+    padding: 2vh;
+    font-size: 0.9em;
+}

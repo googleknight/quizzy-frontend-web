@@ -5,5 +5,6 @@ module.exports = {
     },
     "rules":{
         "jsx-a11y/href-no-hash":0,
+        "react/prefer-stateless-function":0,
     }
 };
