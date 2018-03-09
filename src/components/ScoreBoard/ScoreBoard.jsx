@@ -9,7 +9,6 @@ const rand = require('random-key');
 
 class ScoreBoard extends Component {
   render() {
-    console.log(this.props.userscore);
     const scores = this.props.data.map((score, index) =>
       <Scores index={index + 1} key={rand.generate(5)} score={score} />);
 
@@ -17,7 +16,11 @@ class ScoreBoard extends Component {
       <div className="ScoreBoard-App-container" >
         <Header username={`Hello ${this.props.username}`} />
         <p className="ScoreBoard-message" >Your Score</p>
-        <p className="ScoreBoard-score" >{`${this.props.userscore.answer} /${this.props.userscore.total}`}</p>
+        <p className="ScoreBoard-score" >
+          {`${this.props.userscore.answer}`}
+          <span className="ScoreBoard-score-total">{` /${this.props.userscore.total}`}</span>
+        </p>
+        <p className="Scores-leaderboard">Leaderboard</p>
         <div className="ScoreBoard-App-body">
           {scores}
           <Button

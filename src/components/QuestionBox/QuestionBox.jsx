@@ -10,6 +10,7 @@ class QuestionBox extends Component {
     super(props);
     this.state = {
       home: '',
+      response:this.props.question.response,
     };
   }
   onOptionChange=(event)=>{
@@ -27,6 +28,7 @@ class QuestionBox extends Component {
           .then(response => response.json())
           .then((responseObj) => {
               console.log(responseObj)
+              this.setState({response:selectedOption})
           });
   }
 
@@ -34,7 +36,7 @@ class QuestionBox extends Component {
     const options = this.props.question.options.map(option => (<OptionButton
       key={rand.generate(5)}
       value={option}
-      response={this.props.question.response}
+      checked={this.state.response===option}
       name={this.props.index}
       onChange={this.onOptionChange}
     />));

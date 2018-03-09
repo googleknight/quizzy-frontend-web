@@ -23,7 +23,6 @@ class App extends Component {
 
 
   calculateScore=(username)=>  {
-    console.log(username);
     fetch('/quizzy/score', { method: 'POST', headers: {
       "Content-type": "application/json; charset=utf-8"
     }, body: JSON.stringify({username}) })
@@ -38,11 +37,13 @@ class App extends Component {
         this.setState({
           homepage: 'Score',
           data:topScores.data,
+          username:username,
         });
       })})
   }
 
   handleLogin=(username)=>  {
+    if(username.length!==0){
     fetch('/quizzy/login', { method: 'POST', headers: {
       "Content-type": "application/json; charset=utf-8"
     }, body: JSON.stringify({username}) })
@@ -53,7 +54,7 @@ class App extends Component {
           data:responseObj.data,
           username
         });
-      });
+      });}
   }
 
   render() {
@@ -64,11 +65,12 @@ class App extends Component {
       homepage = (<Quizzy
          data={this.state.data} 
          username={this.state.username}
-         callbackFromApp={()=>this.calculateScore(this.state.username)}/>);
+         callbackFromApp={(username)=>this.calculateScore(username)}/>);
     } else if (this.state.homepage === 'Score') {
       homepage = (<ScoreBoard 
          userscore={this.state.userscore}
          data={this.state.data}
+         username={this.state.username}
         callbackFromApp={this.gotoLogin}/>);
     }
     return (

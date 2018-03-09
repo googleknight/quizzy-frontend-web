@@ -1,24 +1,24 @@
 .Scores{
     border: 2px solid black;
     width:80vh;
-    margin: 5vh;
+    margin: 2.5vh;
+    justify-content: space-between;
     display: flex;
     flex-direction:row;
+    background-color: #45c7f5;
 }
 .Scores-number{
-    border-bottom: 2px solid black;
-    margin: 0;
-    padding: 1vh;
+    margin: 1vh;
+    font-size:1.3em;
+    font-weight: 600;
 }
-.Scores-statement{
-    border-bottom: 2px solid black;
-   
+.Scores-username{
     margin:0;
-    padding: 2vh;
-    font-size: 0.8em;
-    text-justify: center;
+    font-size:1.2em;
 }
-.Scores-options{
-    padding: 2vh;
-    font-size: 0.9em;
+.Scores-score{
+    margin:1.2vh;
+    font-size:1.4em;
+    font-weight: 400;
+    color:white;
 }

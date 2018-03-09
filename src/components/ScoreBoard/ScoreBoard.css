@@ -4,3 +4,23 @@
     flex-direction: column;
     align-items: center;
 }
+.ScoreBoard-message{
+    color: #f89406;
+    font-weight: 800;
+    margin-left: 4vh;
+    font-size: 1.2em;
+}
+.ScoreBoard-score{
+    margin: 0vh 0vh 0vh 5.2vh;
+    font-size: 3em;
+    font-weight: 100;
+}
+.ScoreBoard-score-total{
+    font-size: 0.6em;
+    font-weight: 700;
+}
+.Scores-leaderboard{
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 800;
+}

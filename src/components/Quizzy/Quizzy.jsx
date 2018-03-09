@@ -10,7 +10,12 @@ const rand = require('random-key');
 class Quizzy extends Component {
   render() {
     const questionBoxes = this.props.data.map((question, index) =>
-      <QuestionBox index={index + 1} key={rand.generate(5)} question={question} username={this.props.username} />);
+      (<QuestionBox
+        index={index + 1}
+        key={rand.generate(5)}
+        question={question}
+        username={this.props.username}
+      />));
     return (
       <div className="Quizzy-App-container" >
         <Header username={`Hello ${this.props.username}`} />
@@ -19,7 +24,7 @@ class Quizzy extends Component {
           <Button
             className="Quizzy-button"
             value="Calculate"
-            onClick={this.props.callbackFromApp}
+            onClick={() => this.props.callbackFromApp(this.props.username)}
           />
         </div>
       </div>
