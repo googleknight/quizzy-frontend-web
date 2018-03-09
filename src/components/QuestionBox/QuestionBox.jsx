@@ -10,35 +10,20 @@ class QuestionBox extends Component {
     super(props);
     this.state = {
       home: '',
-      response:this.props.question.response,
+      response: this.props.question.response,
     };
   }
-  onOptionChange=(event)=>{
-    let username=this.props.username;
-    let questionId=this.props.question.questionId;
-    let selectedOption=event.target.value;
-    let body=JSON.stringify(
-        {username,
-        questionId,
-        selectedOption}); 
-    fetch('/quizzy/saveResponse', { method: 'POST', headers: {
-        "Content-type": "application/json; charset=utf-8"
-      }, 
-      body: body})
-          .then(response => response.json())
-          .then((responseObj) => {
-              console.log(responseObj)
-              this.setState({response:selectedOption})
-          });
+  handleOnChange=(event) => {
+    this.setState({ response: event.target.value });
+    this.props.onChange(event, this.props.question.questionId);
   }
-
   render() {
     const options = this.props.question.options.map(option => (<OptionButton
       key={rand.generate(5)}
       value={option}
-      checked={this.state.response===option}
+      checked={this.state.response === option}
       name={this.props.index}
-      onChange={this.onOptionChange}
+      onChange={event => this.handleOnChange(event)}
     />));
     return (
       <div className="QuestionBox">
